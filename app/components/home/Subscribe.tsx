@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 
+
+
 export default function Subscribe() {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
@@ -25,7 +27,7 @@ export default function Subscribe() {
 
    
     setTimeout(() => {
-      // Store email in local storage
+     
       const updatedEmails = [...subscribedEmails, email];
       localStorage.setItem("subscribedEmails", JSON.stringify(updatedEmails));
       setSubscribedEmails(updatedEmails);

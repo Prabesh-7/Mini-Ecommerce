@@ -6,7 +6,7 @@ import { getCategories } from "../../services/productService";
 import { getIconComponent } from "../../utils/iconMapper";
 import { LucideIcon } from "lucide-react";
 
-interface Category {
+type Category= {
   name: string;
   icon?: string;
 }
