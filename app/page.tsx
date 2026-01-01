@@ -6,11 +6,11 @@ import Subscribe from "../app/components/home/Subscribe";
 
 export default function HomePage() {
   return (
-    <>
+    <div>
       <Hero />
       <CategoryList />
       <ProductGrid />
       <Subscribe />
-    </>
+    </div>
   );
 }

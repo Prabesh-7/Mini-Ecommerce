@@ -3,107 +3,77 @@
 import { useEffect, useState } from "react";
 import CategoryCard from "../home/CategoryCard";
 import { getCategories } from "../../services/productService";
-import { getIconComponent } from "../../utils/iconMapper";
-import { LucideIcon } from "lucide-react";
-
-type Category= {
-  name: string;
-  icon?: string;
-}
-
-interface CategoryWithIcon extends Category {
-  iconComponent: LucideIcon;
-}
 
 export default function CategoryList() {
-  const [categories, setCategories] = useState<CategoryWithIcon[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [categories, setCategories] = useState<string[]>([]);
+  const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
-    async function fetchCategories() {
-      try {
-        setLoading(true);
-        setError(null);
-        const response = await getCategories();
-        
-        console.log("Categories API response:", response);
-        
-        // Handle both array response and object with data property
-        let categoryList: Category[] = [];
-        
-        if (Array.isArray(response)) {
-          // API returns simple array of strings
-          categoryList = response.map((name: string) => ({
-            name,
-            icon: name,
-          }));
-        } else if (response?.data && Array.isArray(response.data)) {
-          // API returns object with data property
-          categoryList = response.data;
-        }
-        
-        if (categoryList.length > 0) {
-          // Map to include icon components
-          const categoriesWithIcons = categoryList.map((cat: Category) => ({
-            ...cat,
-            iconComponent: getIconComponent(cat.icon),
-          }));
-          setCategories(categoriesWithIcons);
-        } else {
-          setCategories([]);
-        }
-      } catch (err: any) {
-        console.error("Fetch categories error:", err);
-        setError("Failed to load categories");
+    getCategories()
+      .then(setCategories)
+      .catch((err) => {
+        console.error("Categories error:", err);
         setCategories([]);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchCategories();
+      });
   }, []);
 
+  const initialVisibleCount = 6;
+  const displayedCategories = showAll ? categories : categories.slice(0, initialVisibleCount);
+
   return (
-    <section className="container mx-auto py-12 px-4">
-      {/* Header */}
-      <header className="flex items-center justify-between mb-8">
-        <h2 className="text-3xl font-bold text-gray-900">Categories</h2>
-        <button className="text-sm px-4 py-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition-colors font-medium">
-          View All Categories
-        </button>
-      </header>
+    <section className="
+    py-16 px-5 md:px-8 lg:px-12 max-w-7xl mx-auto relative mt-[-100]">
+      <div className="relative mb-10" style={{ height: '80px' }}>
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+          Categories
+        </h2>
 
-      {/* Loading state */}
-      {loading && (
-        <div className="text-center py-12">
-          <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-blue-500 border-t-transparent"></div>
-          <p className="mt-3 text-gray-600">Loading categories...</p>
+        {categories.length > initialVisibleCount && (
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="absolute w-50 h-15 -top-6.5 left-250 bg-[#E7FAFE] rounded-2xl
+              border border-gray-200
+              text-[#000000]
+              font-inter
+              text-[16px]
+              leading-none
+              tracking-[-0.02em]
+              shadow-sm
+              hover:shadow-md
+              hover:brightness-98
+              transition-all duration-200
+              flex items-center justify-center
+            "
+          >
+            {showAll ? "Show Less" : "View All Categories"}
+          </button>
+        )}
+      </div>
+
+      {/* Categories cards */}
+      {categories.length === 0 ? (
+        <div className="text-center py-12 text-gray-500">
+          Loading categories...
         </div>
-      )}
-
-      {/* Error state */}
-      {error && !loading && (
-        <div className="text-center py-12 text-red-600 font-medium">{error}</div>
-      )}
-
-      {/* Categories */}
-      {!loading && !error && categories.length > 0 && (
-        <ul className="flex gap-6 overflow-x-auto pb-2">
-          {categories.map((category) => (
-            <CategoryCard
-              key={category.name}
-              title={category.name}
-              icon={category.iconComponent}
-            />
+      ) : (
+        <div
+          className={`
+           
+            grid 
+            grid-cols-2 
+            sm:grid-cols-3 
+            md:grid-cols-4 
+            lg:grid-cols-5 
+            xl:grid-cols-6 
+            gap-6
+            ${showAll ? 'gap-y-10' : ''}
+            mt-4             
+          `}
+        >
+          {displayedCategories.map((categoryName) => (
+            <CategoryCard key={categoryName} title={categoryName} />
           ))}
-        </ul>
-      )}
-
-      {/* Empty state */}
-      {!loading && !error && categories.length === 0 && (
-        <div className="text-center py-12 text-gray-600">No categories available</div>
+        </div>
       )}
     </section>
   );

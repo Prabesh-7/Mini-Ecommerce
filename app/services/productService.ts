@@ -1,4 +1,4 @@
-// src/services/productService.ts
+
 const BASE_URL = "https://fakeapi.net";
 
 export async function getProducts(params: {
@@ -24,7 +24,7 @@ export async function getProducts(params: {
     throw new Error(`Failed to fetch products: ${res.status} ${res.statusText}`);
   }
 
-  return res.json(); // returns { data: [...], pagination: {...} }
+  return res.json(); 
 }
 
 export async function getCategories() {

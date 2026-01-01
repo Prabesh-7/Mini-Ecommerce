@@ -1,91 +1,125 @@
+
+import { Play, Tags } from "lucide-react";
+
 export default function Hero() {
   return (
-    <section className="relative bg-white pt-16 pb-28 md:pt-20 md:pb-40 overflow-hidden">
-     
-      <div className="absolute inset-0 opacity-[0.02] pointer-events-none">
-        <div className="w-full h-full bg-[linear-gradient(to_right,#e5e7eb11_1px,transparent_1px),linear-gradient(to_bottom,#e5e7eb11_1px,transparent_1px)] bg-[size:32px_32px]"></div>
-      </div>
+    <section className="relative  min-h-225 overflow-hidden">
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 xl:gap-16 items-center">
-       
-          <div className="relative">
-          
-            <div className="relative rounded-3xl bg-[#e6f4f1] p-8 md:p-10 lg:p-12 shadow-xl overflow-hidden border-4 border-purple-500/40">
-              <div className="absolute inset-0 border-4 border-purple-400/30 rounded-3xl blur-sm opacity-70"></div>
 
+      {/*left container */}
+      <div className="relative mx-auto w-full max-w-screen-2xl px-5 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
+        {/* Positioning context with controlled height */}
+        <div className="relative h-200 xl:h-225">
+          {/* Card */}
+          <div
+            className="
+              absolute top-10 left-20  z-20
+              w-155 h-160
+              bg-[#E7FAFE] rounded-bl-4xl rounded-tl-4xl
+              p-8 sm:p-10 lg:p-12
+              
+            "
+          >
+            {/* Hot Deals badge */}
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-white rounded-full shadow-sm mb-8">
             
-              <div className="inline-flex items-center gap-2 mb-8 px-5 py-2.5 bg-white/90 backdrop-blur-sm rounded-full shadow-sm">
-                <span className="text-amber-600 font-bold">🔥</span>
-                <span className="font-semibold text-gray-800 text-sm">Hot Deals</span>
-              </div>
+              <img src="/hot deals.png" alt="Hot Deals" className="h-[24px] w-[24px]" />
+             <span className="font-inter font-semibold text-[14px] leading-none tracking-[-0.02em] text-black">
+              Hot Deals
+            </span>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight tracking-tight mb-6">
-                Enjoy 10% off in all
-                <br className="hidden sm:block" />
-                our products.
-              </h1>
+            </div>
 
-              <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-10 max-w-2xl">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                incididunt ut labore et dolore magna aliqua enim ad minim veniam.
-              </p>
+ 
 
-         
-              <div className="flex flex-wrap gap-3 mb-10">
-                <span className="px-5 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium shadow-sm">
-                  $ Lorem
-                </span>
-                <span className="px-5 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-medium shadow-sm">
-                  ♾️ Epsom
-                </span>
-              </div>
+            <h1 className="font-inter font-semibold text-[64px] leading-none tracking-[-0.04em] text-gray-900 mb-6">
+            Enjoy 10% of in all
+            <br/>
+            our products.
+            </h1>
 
-           
-              <div className="flex flex-col sm:flex-row sm:items-center gap-6 lg:gap-10">
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-gray-300 to-gray-400 overflow-hidden shadow-sm">
-                  
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900">John Smith</p>
-                    <p className="text-sm text-gray-500">15 March 2022</p>
-                  </div>
+
+            <p className="text-base sm:text-lg text-gray-700 leading-relaxed mb-10 max-w-xl">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua.
+            </p>
+
+            <div className="flex flex-wrap gap-3 mb-12">
+              <span className="inline-flex items-center gap-2 px-5 py-2 bg-white rounded-full text-sm font-medium shadow-sm border border-gray-200">
+            <div className="flex items-center justify-center w-6 h-6 rounded-full bg-black text-white text-sm font-semibold">
+             $
+            </div>
+          <span className="font-inter  text-[14px] leading-none tracking-[-0.02em] text-black">
+           Lorem
+          </span>
+          </span>
+
+            <span className="inline-flex items-center gap-2 px-5 py-2 bg-white rounded-full text-sm font-medium shadow-sm border border-gray-200">
+            <Tags className="w-5 h-5 text-black" />
+            <span className="font-inter  text-[14px] leading-none tracking-[-0.02em] text-black">
+             Epsom
+             </span>
+            </span>
+            </div>
+
+            <div className="flex flex-col mt-20 sm:flex-row sm:items-center justify-between gap-8">
+              <div className="flex items-center gap-4">
+              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-100 to-blue-300 flex items-center justify-center shadow-sm overflow-hidden">
+            <img 
+            src="/John.png" 
+            alt="John" 
+            className="w-full h-full object-cover" 
+             />
+            </div>
+
+                <div>
+                  <p className="font-bold text-gray-900">John Smith</p>
+                  <p className="text-sm text-gray-600">15 March 2022</p>
                 </div>
-
-                <button className="
-                  px-9 py-4.5 bg-black text-white font-semibold text-base
-                  rounded-full flex items-center gap-3
-                  hover:bg-gray-900 transition-all shadow-lg
-                  active:scale-98
-                ">
-                  View Products
-                  <span className="text-lg" aria-hidden="true">→</span>
-                </button>
               </div>
+
+              <button
+                className="
+                  px-10 py-5 bg-black text-white font-bold text-lg
+                  rounded-full flex items-center gap-3
+                  shadow-xl shadow-black/20
+                  hover:bg-gray-900 active:scale-98
+                  transition-all duration-300
+                "
+              >
+                View Products
+                <div
+                  className="
+                    w-8 h-8 bg-white rounded-full
+                    flex items-center justify-center
+                    shadow-md shadow-black/20
+                  "
+                >
+                  <Play className="w-4 h-4 text-black" />
+                </div>
+              </button>
             </div>
           </div>
 
-          <div className="relative hidden lg:block">
-            <div className="relative w-full aspect-[4/3.2] max-w-[680px] mx-auto">
-          
-              <img
-                src="https://thumbs.dreamstime.com/b/assorted-tech-gadgets-white-background-including-wireless-earbuds-charging-case-smartwatch-black-strap-pair-422033714.jpg"
-                alt="Tech accessories flat lay"
-                className="absolute inset-0 w-full h-full object-cover rounded-2xl shadow-2xl"
-                loading="lazy"
-              />
-
-         
-              <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent rounded-2xl pointer-events-none"></div>
-            </div>
-
-     
-            <div className="absolute -bottom-10 -right-10 w-72 h-72 bg-teal-100 rounded-full blur-3xl opacity-40 -z-10"></div>
-            <div className="absolute -top-16 -left-16 w-80 h-80 bg-purple-50 rounded-full blur-3xl opacity-30 -z-10"></div>
+          {/* RIGHT image – exact specs */}
+          <div
+            className="
+              absolute top-10 right-20 left-175  h-160
+            "
+          >
+            <img
+              src="/hero.png"
+              alt="Tech gadgets flatlay"
+              className="w-full h-full object-cover"
+              width={660}
+              height={640}
+           
+            />
           </div>
         </div>
       </div>
     </section>
   );
 }
+
+

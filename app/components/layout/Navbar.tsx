@@ -1,4 +1,3 @@
-// src/components/layout/Navbar.tsx
 "use client";
 
 import { Twitter, Facebook, Instagram } from "lucide-react";
@@ -9,73 +8,64 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex-shrink-0">
-            <h1 className="text-3xl font-bold tracking-tight text-gray-900">
+          <div>
+            <h1
+              className="text-[24px] font-[400] tracking-tight text-black"
+              style={{
+                fontFamily: "'Lobster', cursive",
+                lineHeight: "100%",
+                letterSpacing: "0%",
+              }}
+            >
               ECOM
             </h1>
           </div>
 
-          
+          {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-10">
             {["Home", "Products", "Blog", "Contact", "About us"].map((item) => (
               <a
                 key={item}
                 href="#"
-                className="text-base font-medium text-gray-700 hover:text-gray-900 transition-colors relative py-1 group"
+                className="text-[16px] font-medium text-black hover:text-black transition-colors relative py-1 group"
+                style={{
+                  fontFamily: "Inter, system-ui, sans-serif",
+                  fontWeight: 500,
+                  lineHeight: "100%",
+                  letterSpacing: "-2%",
+                }}
               >
                 {item}
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gray-900 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-black transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
           </nav>
 
-          {/* Social Icons - Right side */}
+          {/* Social Icons */}
           <div className="hidden md:flex items-center space-x-8">
             <a
               href="#"
-              className="text-gray-600 hover:text-gray-900 transition-colors"
+              className="text-black hover:text-gray-800 transition-colors"
               aria-label="Facebook"
             >
-              <Facebook size={22} strokeWidth={2.2} />
+              <Facebook size={24} strokeWidth={2.4} />
             </a>
 
             <a
               href="#"
-              className="text-gray-600 hover:text-gray-900 transition-colors"
+              className="text-black hover:text-gray-800 transition-colors"
               aria-label="Twitter"
             >
-              <Twitter size={22} strokeWidth={2.2} />
+              <Twitter size={24} strokeWidth={2.4} />
             </a>
 
             <a
               href="#"
-              className="text-gray-600 hover:text-gray-900 transition-colors"
+              className="text-black hover:text-gray-800 transition-colors"
               aria-label="Instagram"
             >
-              <Instagram size={22} strokeWidth={2.2} />
+              <Instagram size={24} strokeWidth={2.4} />
             </a>
-          </div>
-
-          {/* Mobile menu button (optional - can be expanded later) */}
-          <div className="md:hidden">
-            <button
-              className="p-2 text-gray-600 hover:text-gray-900 focus:outline-none"
-              aria-label="Menu"
-            >
-              <svg
-                className="w-8 h-8"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
           </div>
         </div>
       </div>

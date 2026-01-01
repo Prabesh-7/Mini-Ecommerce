@@ -14,11 +14,26 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen flex flex-col">
+      <body >
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>
   );
 }
+
+
+import { Inter, Lobster } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const lobster = Lobster({
+  subsets: ["latin"],
+  weight: "400", // REQUIRED for Lobster
+  variable: "--font-lobster",
+});
+ 

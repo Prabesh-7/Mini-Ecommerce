@@ -1,41 +1,59 @@
-// src/components/home/CategoryCard.tsx
-import { LucideIcon } from "lucide-react";
-
 interface CategoryCardProps {
   title: string;
-  icon: LucideIcon;
+  index?: number; 
 }
 
-const categoryColors: Record<string, string> = {
-  electronics: "bg-blue-50",
-  accessories: "bg-purple-50",
-  clothing: "bg-pink-50",
-  footwear: "bg-orange-50",
-  furniture: "bg-amber-50",
-  health: "bg-red-50",
-  outdoor: "bg-green-50",
-  sports: "bg-cyan-50",
-  appliances: "bg-indigo-50",
-};
+export default function CategoryCard({ title, index = 0 }: CategoryCardProps) {
+  // Pastel background based on category name
+  const getBgColor = (name: string) => {
+    const lower = name.toLowerCase();
+    if (lower.includes("access") || lower.includes("bag")) return "bg-[#708246]/10";
+    if (lower.includes("appl") || lower.includes("kitchen")) return "bg-[#6CC63F]/10";
+    if (lower.includes("cloth") || lower.includes("wear")) return "bg-[#CC261B]/10";
+    if (lower.includes("electro") || lower.includes("tech")) return "bg-[#F09E00]/10";
+    if (lower.includes("foot") || lower.includes("shoe")) return "bg-[#B03B19]/10";
+    if (lower.includes("furn") || lower.includes("home")) return "bg-[#A6644E]/10";
+    return "bg-gray-50";
+  };
 
-export default function CategoryCard({
-  title,
-  icon: Icon,
-}: CategoryCardProps) {
-  const bgColor = categoryColors[title.toLowerCase()] || "bg-gray-50";
+  const bgColor = getBgColor(title);
 
   return (
     <li
       className={`
-        flex flex-col items-center justify-center
+        relative
         ${bgColor}
-        rounded-2xl p-6 min-w-[140px] h-40
-        hover:shadow-md transition-shadow duration-300
+        w-[180px]
+        h-[152px]
+        rounded-[30px]
+        transition-all duration-300
+        hover:shadow-lg hover:scale-[1.03]
         cursor-pointer
+        border border-gray-100/70
+        flex-shrink-0
+        opacity-100
+        flex flex-col items-center justify-center
       `}
     >
-      <Icon size={40} className="text-gray-700 mb-3" strokeWidth={1.2} />
-      <span className="text-sm font-medium text-gray-800 text-center">
+      
+      <div className="absolute left-1/2 -translate-x-1/2 -top-6 w-[80px] h-[80px] overflow-hidden rounded-2xl bg-white flex items-center justify-center">
+        <img
+          src="/Category.png"
+          alt={title}
+          className="w-full h-full object-contain"
+        />
+      </div>
+
+      {/* Title - positioned at bottom */}
+      <span
+        className="
+          absolute bottom-4
+          text-sm font-medium text-gray-800
+          text-center
+          px-3
+          leading-tight
+        "
+      >
         {title}
       </span>
     </li>
