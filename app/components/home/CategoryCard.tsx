@@ -4,7 +4,7 @@ interface CategoryCardProps {
 }
 
 export default function CategoryCard({ title, index = 0 }: CategoryCardProps) {
-  // Pastel background based on category name
+  
   const getBgColor = (name: string) => {
     const lower = name.toLowerCase();
     if (lower.includes("access") || lower.includes("bag")) return "bg-[#708246]/10";
@@ -44,7 +44,7 @@ export default function CategoryCard({ title, index = 0 }: CategoryCardProps) {
         />
       </div>
 
-      {/* Title - positioned at bottom */}
+    
       <span
         className="
           absolute bottom-4

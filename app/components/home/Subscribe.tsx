@@ -37,7 +37,7 @@ export default function Subscribe() {
 
           <div className="relative w-full flex items-center justify-center py-16">
             <div className="max-w-xl text-center">
-              <h2 className="font-inter font-semibold text-5xl leading-tight tracking-tighter text-gray-900 mb-4">
+              <h2 className="font-inter font-semibold text-4xl leading-tight tracking-tighter text-gray-900 mb-4">
                 Subscribe to get the first news
               </h2>
               <p className="font-inter font-normal text-base leading-7 text-gray-600 mb-8">
@@ -51,7 +51,7 @@ export default function Subscribe() {
                   onChange={(e) => setEmail(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Your email address..."
-                  className="flex-1 px-4 py-3   rounded-lg text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="flex-1 px-4 py-3   rounded-lg text-gray-700 placeholder-gray-500 "
                 />
                 <button
                   onClick={handleSubscribe}
