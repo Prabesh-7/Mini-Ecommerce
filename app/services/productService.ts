@@ -1,20 +1,27 @@
-
-const BASE_URL = "https://fakeapi.net";
+import { endPoints } from "@/lib/endPoints";
 
 export async function getProducts(params: {
   page?: number;
   limit?: number;
   search?: string;
-  category?: string;
 }) {
+
+
+
   const query = new URLSearchParams({
     page: String(params.page ?? 1),
-    limit: String(params.limit ?? 10),
-    ...(params.search && { search: params.search }),
-    ...(params.category && { category: params.category }),
+    limit: String(params.limit ?? 10)
   });
 
-  const url = `${BASE_URL}/products?${query}`;
+    if (params.search) {
+    query.append("search", params.search);
+  }
+
+
+
+
+
+  const url = `${endPoints.products.get}?${query}`;
 
   const res = await fetch(url, {
     cache: "no-store",
@@ -27,8 +34,14 @@ export async function getProducts(params: {
   return res.json(); 
 }
 
+
+
+
+
+
+
 export async function getCategories() {
-  const url = `${BASE_URL}/products/categories`;
+  const url =endPoints.categories.get;
 
   const res = await fetch(url, {
     cache: "no-store",
@@ -38,5 +51,9 @@ export async function getCategories() {
     throw new Error(`Failed to fetch categories: ${res.status} ${res.statusText}`);
   }
 
-  return res.json(); // returns { data: [...] }
+  return res.json(); 
 }
+
+
+
+
