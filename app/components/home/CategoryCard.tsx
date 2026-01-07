@@ -18,6 +18,7 @@ export default function CategoryCard({ title, index = 0 }: CategoryCardProps) {
 
   const bgColor = getBgColor(title);
 
+  
   return (
     <li
       className={`

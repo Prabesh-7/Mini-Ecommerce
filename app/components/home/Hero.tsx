@@ -108,7 +108,7 @@ export default function Hero() {
             "
           >
             <img
-              src="/hero.png"
+              src="/Hero.png"
               alt="Tech gadgets flatlay"
               className="w-full h-full object-cover"
               width={660}
