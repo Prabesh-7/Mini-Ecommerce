@@ -1,10 +1,9 @@
 interface CategoryCardProps {
   title: string;
-  index?: number; 
+  index?: number;
 }
 
 export default function CategoryCard({ title, index = 0 }: CategoryCardProps) {
-  
   const getBgColor = (name: string) => {
     const lower = name.toLowerCase();
     if (lower.includes("access") || lower.includes("bag")) return "bg-[#708246]/10";
@@ -18,45 +17,53 @@ export default function CategoryCard({ title, index = 0 }: CategoryCardProps) {
 
   const bgColor = getBgColor(title);
 
-  
   return (
-    <li
+    <div
       className={`
-        relative
+        group relative
+        flex h-full flex-col items-center justify-center
         ${bgColor}
-        w-[180px]
-        h-[152px]
-        rounded-[30px]
-        transition-all duration-300
-        hover:shadow-lg hover:scale-[1.03]
-        cursor-pointer
+        rounded-3xl
         border border-gray-100/70
-        flex-shrink-0
-        opacity-100
-        flex flex-col items-center justify-center
+        shadow-sm
+        transition-all duration-300
+        hover:shadow-md hover:scale-[1.03]
+        active:scale-[0.98]
+        cursor-pointer
+        overflow-hidden
       `}
     >
-      
-      <div className="absolute left-1/2 -translate-x-1/2 -top-6 w-[80px] h-[80px] overflow-hidden rounded-2xl bg-white flex items-center justify-center">
+      {/* Icon / Image container */}
+      <div className="
+        mt-3 mb-6 
+        h-20 w-20 
+        overflow-hidden rounded-2xl 
+        bg-white 
+        shadow-sm 
+        flex items-center justify-center
+        transition-transform duration-400
+        group-hover:scale-110
+      ">
         <img
           src="/Category.png"
           alt={title}
-          className="w-full h-full object-contain"
+          className="h-14 w-14 object-contain sm:h-16 sm:w-16"
+          loading="lazy"
         />
       </div>
 
-    
+      {/* Category name */}
       <span
         className="
-          absolute bottom-4
-          text-sm font-medium text-gray-800
-          text-center
-          px-3
-          leading-tight
+          px-4 pb-6
+          text-center text-sm font-medium 
+          leading-tight tracking-tight 
+          text-gray-800
+          sm:text-base
         "
       >
         {title}
       </span>
-    </li>
+    </div>
   );
 }

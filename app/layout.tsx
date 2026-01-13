@@ -4,7 +4,7 @@ import Footer from "./components/layout/Footer";
 
 export const metadata = {
   title: "Mini E-commerce",
-  description: "Frontend Internship Assignment",
+  
 };
 
 export default function RootLayout({

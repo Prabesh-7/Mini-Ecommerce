@@ -1,8 +1,11 @@
 "use client";
 
-import { Twitter, Facebook, Instagram } from "lucide-react";
+import { useState } from "react";
+import { Twitter, Facebook, Instagram, Menu, X } from "lucide-react";
 
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
+
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -21,13 +24,13 @@ export default function Navbar() {
             </h1>
           </div>
 
-          {/* Navigation */}
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-10">
             {["Home", "Products", "Blog", "Contact", "About us"].map((item) => (
               <a
                 key={item}
                 href="#"
-                className="text-[16px] font-medium text-black hover:text-black transition-colors relative py-1 group"
+                className="text-[16px] font-medium text-black relative py-1 group"
                 style={{
                   fontFamily: "Inter, system-ui, sans-serif",
                   fontWeight: 500,
@@ -41,33 +44,48 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Social Icons */}
+          {/* Desktop Social Icons */}
           <div className="hidden md:flex items-center space-x-8">
-            <a
-              href="#"
-              className="text-black hover:text-gray-800 transition-colors"
-              aria-label="Facebook"
-            >
-              <Facebook size={24} strokeWidth={2.4} />
-            </a>
-
-            <a
-              href="#"
-              className="text-black hover:text-gray-800 transition-colors"
-              aria-label="Twitter"
-            >
-              <Twitter size={24} strokeWidth={2.4} />
-            </a>
-
-            <a
-              href="#"
-              className="text-black hover:text-gray-800 transition-colors"
-              aria-label="Instagram"
-            >
-              <Instagram size={24} strokeWidth={2.4} />
-            </a>
+            <Facebook size={24} strokeWidth={2.4} />
+            <Twitter size={24} strokeWidth={2.4} />
+            <Instagram size={24} strokeWidth={2.4} />
           </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setOpen(!open)}
+            className="md:hidden text-black"
+          >
+            {open ? <X size={28} /> : <Menu size={28} />}
+          </button>
         </div>
+
+        {/* Mobile Menu */}
+        {open && (
+          <div className="md:hidden pb-6">
+            <nav className="flex flex-col space-y-6 pt-6">
+              {["Home", "Products", "Blog", "Contact", "About us"].map((item) => (
+                <a
+                  key={item}
+                  href="#"
+                  className="text-[16px] font-medium text-black"
+                  style={{
+                    fontFamily: "Inter, system-ui, sans-serif",
+                    fontWeight: 500,
+                  }}
+                >
+                  {item}
+                </a>
+              ))}
+            </nav>
+
+            <div className="flex items-center space-x-6 pt-6">
+              <Facebook size={22} />
+              <Twitter size={22} />
+              <Instagram size={22} />
+            </div>
+          </div>
+        )}
       </div>
     </header>
   );

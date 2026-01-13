@@ -19,62 +19,53 @@ export default function CategoryList() {
 
   const initialVisibleCount = 6;
   const displayedCategories = showAll ? categories : categories.slice(0, initialVisibleCount);
+  const hasMore = categories.length > initialVisibleCount;
 
   return (
-    <section className="
-    py-16 px-5 md:px-8 lg:px-12 max-w-7xl mx-auto relative mt-[-100]">
-      <div className="relative mb-10" style={{ height: '80px' }}>
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-          Categories
-        </h2>
+    <section className="py-16 md:py-20 bg-white">
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        {/* Header with View All button */}
+        <div className="relative mb-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            Categories
+          </h2>
 
-        {categories.length > initialVisibleCount && (
-          <button
-            onClick={() => setShowAll(!showAll)}
-            className="absolute w-50 h-15 -top-6.5 left-250 bg-[#E7FAFE] rounded-2xl
-              border border-gray-200
-              text-[#000000]
-              font-inter
-              text-[16px]
-              leading-none
-              tracking-[-0.02em]
-              shadow-sm
-              hover:shadow-md
-              hover:brightness-98
-              transition-all duration-200
-              flex items-center justify-center
-            "
+          {hasMore && (
+            <button
+              onClick={() => setShowAll(!showAll)}
+              className={`
+                rounded-2xl border border-gray-200 bg-[#E7FAFE] px-6 py-3
+                font-inter text-base font-medium text-black
+                shadow-sm transition-all duration-200
+                hover:bg-[#d5f4fb] hover:shadow-md
+                active:scale-98
+                sm:px-8 sm:py-3.5
+              `}
+            >
+              {showAll ? "Show Less" : "View All Categories"}
+            </button>
+          )}
+        </div>
+
+        {/* Categories grid */}
+        {categories.length === 0 ? (
+          <div className="py-16 text-center text-gray-500">
+            <p className="text-lg">Loading categories...</p>
+          </div>
+        ) : (
+          <div
+            className={`
+              grid grid-cols-2 gap-5 sm:gap-6
+              md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6
+              ${showAll ? "gap-y-8 md:gap-y-10" : "gap-y-6"}
+            `}
           >
-            {showAll ? "Show Less" : "View All Categories"}
-          </button>
+            {displayedCategories.map((categoryName) => (
+              <CategoryCard key={categoryName} title={categoryName} />
+            ))}
+          </div>
         )}
       </div>
-
-      {/* Categories cards */}
-      {categories.length === 0 ? (
-        <div className="text-center py-12 text-gray-500">
-          Loading categories...
-        </div>
-      ) : (
-        <div
-          className={`
-           
-            grid 
-            grid-cols-2 
-            sm:grid-cols-3 
-            md:grid-cols-4 
-            lg:grid-cols-5 
-            xl:grid-cols-6 
-            gap-6
-            ${showAll ? 'gap-y-10' : ''}
-            mt-4             
-          `}
-        >
-          {displayedCategories.map((categoryName) => (
-            <CategoryCard key={categoryName} title={categoryName} />
-          ))}
-        </div>
-      )}
     </section>
   );
 }

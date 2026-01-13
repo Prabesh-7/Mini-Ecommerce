@@ -1,23 +1,20 @@
-
 import { Play, Tags } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative  min-h-225 overflow-hidden">
-
-
+    <section className="relative min-h-225 overflow-hidden px-4 py-12 sm:px-6 lg:px-8">
       {/*left container */}
-      <div className="relative mx-auto w-full max-w-screen-2xl px-5 sm:px-6 lg:px-8 xl:px-12 2xl:px-16">
+      <div className="relative mx-auto w-full max-w-screen-2xl px-1 sm:px-2 lg:px-4 xl:px-8 2xl:px-12">
         {/* Positioning context with controlled height */}
-        <div className="relative h-200 xl:h-225">
+        <div className="relative h-auto xl:h-225">
+          <div className="relative flex flex-col gap-10 lg:block">
           {/* Card */}
           <div
             className="
-              absolute top-10 left-20  z-20
-              w-155 h-160
+              relative lg:absolute lg:top-10 lg:left-20 z-20
+              w-full max-w-2xl lg:max-w-none lg:w-[620px] min-h-[480px] lg:h-160
               bg-[#E7FAFE] rounded-bl-4xl rounded-tl-4xl
-              p-8 sm:p-10 lg:p-12
-              
+              p-6 sm:p-8 lg:p-10 xl:p-12
             "
           >
             {/* Hot Deals badge */}
@@ -104,7 +101,8 @@ export default function Hero() {
           {/* RIGHT image – exact specs */}
           <div
             className="
-              absolute top-10 right-20 left-175  h-160
+              relative w-[660] h-[340px] sm:h-[420px] md:h-[500px] lg:h-160
+              lg:absolute lg:top-10 lg:right-20 lg:left-[700px]
             "
           >
             <img
@@ -115,6 +113,7 @@ export default function Hero() {
               height={640}
            
             />
+          </div>
           </div>
         </div>
       </div>
