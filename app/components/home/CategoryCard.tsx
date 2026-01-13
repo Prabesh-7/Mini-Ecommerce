@@ -45,7 +45,7 @@ export default function CategoryCard({ title, index = 0 }: CategoryCardProps) {
         group-hover:scale-110
       ">
         <img
-          src="/Category.png"
+          src="Category.png"
           alt={title}
           className="h-14 w-14 object-contain sm:h-16 sm:w-16"
           loading="lazy"

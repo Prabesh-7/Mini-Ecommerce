@@ -20,7 +20,7 @@ export default function Hero() {
             {/* Hot Deals badge */}
             <div className="inline-flex items-center gap-2 px-5 py-2.5 bg-white rounded-full shadow-sm mb-8">
             
-              <img src="/hot deals.png" alt="Hot Deals" className="h-[24px] w-[24px]" />
+              <img src="hot deals.png" alt="Hot Deals" className="h-[24px] w-[24px]" />
              <span className="font-inter font-semibold text-[14px] leading-none tracking-[-0.02em] text-black">
               Hot Deals
             </span>
@@ -63,7 +63,7 @@ export default function Hero() {
               <div className="flex items-center gap-4">
               <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-100 to-blue-300 flex items-center justify-center shadow-sm overflow-hidden">
             <img 
-            src="/John.png" 
+            src="John.png" 
             alt="John" 
             className="w-full h-full object-cover" 
              />
@@ -106,7 +106,7 @@ export default function Hero() {
             "
           >
             <img
-              src="/Hero.png"
+              src="Hero.png"
               alt="Tech gadgets flatlay"
               className="w-full h-full object-cover"
               width={660}

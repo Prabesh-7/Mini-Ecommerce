@@ -28,7 +28,7 @@ export default function Subscribe() {
 
           <div className="absolute top-0 right-0 h-full w-[1250px] hidden lg:block">
             <img
-              src="/Subscribebg.png"
+              src="Subscribebg.png"
               alt="Subscribe background"
               className="w-full h-full object-cover rounded-4xl"
               loading="eager"
