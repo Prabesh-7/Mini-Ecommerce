@@ -25,12 +25,12 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-10">
+          <nav className="hidden md:flex items-center space-x-6 lg:space-x-8 xl:space-x-10">
             {["Home", "Products", "Blog", "Contact", "About us"].map((item) => (
               <a
                 key={item}
                 href="#"
-                className="text-[16px] font-medium text-black relative py-1 group"
+                className="text-sm lg:text-base font-medium text-black relative py-1 group whitespace-nowrap"
                 style={{
                   fontFamily: "Inter, system-ui, sans-serif",
                   fontWeight: 500,
@@ -45,10 +45,10 @@ export default function Navbar() {
           </nav>
 
           {/* Desktop Social Icons */}
-          <div className="hidden md:flex items-center space-x-8">
-            <Facebook size={24} strokeWidth={2.4} />
-            <Twitter size={24} strokeWidth={2.4} />
-            <Instagram size={24} strokeWidth={2.4} />
+          <div className="hidden md:flex items-center space-x-4 lg:space-x-6 xl:space-x-8">
+            <Facebook size={20} strokeWidth={2.4} className="lg:w-6 lg:h-6" />
+            <Twitter size={20} strokeWidth={2.4} className="lg:w-6 lg:h-6" />
+            <Instagram size={20} strokeWidth={2.4} className="lg:w-6 lg:h-6" />
           </div>
 
           {/* Mobile Menu Button */}

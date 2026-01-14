@@ -54,23 +54,23 @@ export default function ProductCard({ product }: { product: Product }) {
           {product.description || "Latest smartphone with advanced features..."}
         </p>
 
-        <div className="mt-auto flex items-center justify-between pt-2">
-          <div className="flex items-center gap-2.5">
+        <div className="mt-auto flex items-center justify-between pt-2 gap-2">
+          <div className="flex items-center gap-2 sm:gap-2.5 min-w-0">
             <div className="
-              flex h-7 w-7 items-center justify-center 
+              flex h-6 w-6 sm:h-7 sm:w-7 items-center justify-center 
               rounded-full bg-black 
-              text-sm font-semibold text-white
+              text-xs sm:text-sm font-semibold text-white flex-shrink-0
             ">
               $
             </div>
-            <span className="text-xl font-bold text-gray-900">
+            <span className="text-lg sm:text-xl font-bold text-gray-900 truncate">
               {product.price.toFixed(2)}
             </span>
           </div>
 
-          <div className="flex items-center gap-1.5 text-sm font-medium text-gray-600">
-            <Tag size={16} className="text-gray-500" />
-            <span className="line-clamp-1">{product.category}</span>
+          <div className="flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm font-medium text-gray-600 min-w-0 flex-shrink">
+            <Tag size={14} className="text-gray-500 flex-shrink-0 sm:w-4 sm:h-4" />
+            <span className="line-clamp-1 truncate">{product.category}</span>
           </div>
         </div>
       </div>

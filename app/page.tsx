@@ -6,7 +6,7 @@ import Subscribe from "../app/components/home/Subscribe";
 
 export default function HomePage() {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <Hero />
       <CategoryList />
       <ProductGrid />
