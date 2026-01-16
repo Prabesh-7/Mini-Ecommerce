@@ -1,9 +1,10 @@
 interface CategoryCardProps {
   title: string;
   index?: number;
+  onClick?: () => void;
 }
 
-export default function CategoryCard({ title, index = 0 }: CategoryCardProps) {
+export default function CategoryCard({ title, index = 0, onClick }: CategoryCardProps) {
   const getBgColor = (name: string) => {
     const lower = name.toLowerCase();
     if (lower.includes("access") || lower.includes("bag")) return "bg-[#708246]/10";
@@ -19,6 +20,7 @@ export default function CategoryCard({ title, index = 0 }: CategoryCardProps) {
 
   return (
     <div
+      onClick={onClick}
       className={`
         group relative
         flex h-full flex-col items-center justify-center
@@ -35,10 +37,10 @@ export default function CategoryCard({ title, index = 0 }: CategoryCardProps) {
     >
       {/* Icon / Image container */}
       <div className="
-        mt-3 mb-6 
+        mt-3 mb-6
         h-20 w-20 
         overflow-hidden rounded-2xl 
-        bg-white 
+        bg-white
         shadow-sm 
         flex items-center justify-center
         transition-transform duration-400
@@ -52,7 +54,7 @@ export default function CategoryCard({ title, index = 0 }: CategoryCardProps) {
         />
       </div>
 
-      {/* Category name */}
+      {/* Category name ----*/}
       <span
         className="
           px-4 pb-6

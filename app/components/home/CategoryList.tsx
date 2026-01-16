@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import CategoryCard from "../home/CategoryCard";
-import { getCategories } from "../../services/productService";
+import { getCategories } from "../../services/categoryService";
 
 export default function CategoryList() {
   const [categories, setCategories] = useState<string[]>([]);
   const [showAll, setShowAll] = useState(false);
+
+  const router = useRouter();
 
   useEffect(() => {
     getCategories()
@@ -17,6 +20,12 @@ export default function CategoryList() {
       });
   }, []);
 
+  // Handle category click - update URL with category and page
+  const handleCategoryClick = (categoryName: string) => {
+    const category = categoryName.toLowerCase();
+    router.push(`?category=${category}&page=1`);
+  };
+
   const initialVisibleCount = 6;
   const displayedCategories = showAll ? categories : categories.slice(0, initialVisibleCount);
   const hasMore = categories.length > initialVisibleCount;
@@ -25,7 +34,7 @@ export default function CategoryList() {
     <section className="py-16 md:py-20 bg-white">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         {/* Header with View All button */}
-        <div className="relative mb-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="relative mb-12 sm:mb-14 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Categories
           </h2>
@@ -61,7 +70,11 @@ export default function CategoryList() {
             `}
           >
             {displayedCategories.map((categoryName) => (
-              <CategoryCard key={categoryName} title={categoryName} />
+              <CategoryCard 
+                key={categoryName} 
+                title={categoryName} 
+                onClick={() => handleCategoryClick(categoryName)}
+              />
             ))}
           </div>
         )}

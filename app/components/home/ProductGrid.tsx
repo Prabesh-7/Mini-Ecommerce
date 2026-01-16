@@ -22,10 +22,7 @@ export default function ProductGrid() {
       setError(null);
 
       try {
-        const response = await getProducts({
-          page: 1,
-          limit: 1000,
-        });
+        const response = await getProducts();
 
         if (response?.data && Array.isArray(response.data)) {
           setAllProducts(response.data);
